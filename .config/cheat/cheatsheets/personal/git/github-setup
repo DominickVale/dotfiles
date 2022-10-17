@@ -1,0 +1,9 @@
+# General user setup
+git config --global user.name "DominickVale"
+git config --global user.email "dominickveil@gmail.com"
+
+# Generate ssh key for github (now required)
+ssh-keygen -t rsa -C "dominickveil@gmail.com"
+
+# Then copy and add it to github ssh keys in the settings and test with
+ssh -T git@github.com

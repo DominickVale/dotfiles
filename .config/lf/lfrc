@@ -1,0 +1,298 @@
+set ratios 1:2:3
+
+# Basic vars
+set shell bash
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+set drawbox on
+set info size
+set dircounts
+set preview true
+set cleaner '~/.config/lf/cleaner'
+set previewer '~/.config/lf/scope'
+# Vars that depend on environmental variables
+$lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
+
+# cmds/functions
+cmd on-cd &{{
+    printf "\033]0; $(pwd | sed "s|$HOME|~|") - lf\007" > /dev/tty
+}}
+# also run at startup
+on-cd
+
+%[ $LF_LEVEL -eq 1 ] || echo -e "\e[1;31m Warning: You're in a nested lf instance!\e[0m"
+
+cmd open ${{
+    case $(file --mime-type "$(readlink -f $f)" -b) in
+	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
+	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
+        text/*|application/json|inode/x-empty) $EDITOR $fx;;
+	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
+	image/svg+xml) display -- $f ;;
+	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
+		setsid -f sxiv -aio 2>/dev/null | while read -r file; do
+			[ -z "$file" ] && continue
+			lf -remote "send select \"$file\""
+			lf -remote "send toggle"
+		done &
+		;;
+	audio/*) mpv --audio-display=no $f ;;
+	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+	application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+	application/pgp-encrypted) $EDITOR $fx ;;
+        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
+    esac
+}}
+
+cmd extract ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "extract?[y/N]"
+	read ans
+	[ $ans = "y" ] && ext $fx
+}}
+
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx
+}}
+
+cmd fileinfo !LESSOPEN='| exiftool %s' LESS='-cRiX' less $f
+
+# use rsync to copy
+cmd paste &{{
+    set -- $(cat ~/.local/share/lf/files)
+    mode="$1"
+    shift
+    case "$mode" in
+        copy)
+            rsync -av --ignore-existing --progress -- "$@" . |
+            stdbuf -i0 -o0 -e0 tr '\r' '\n' |
+            while IFS= read -r line; do
+                lf -remote "send $id echo $line"
+            done
+            ;;
+        move) mv -n -- "$@" .;;
+    esac
+    rm ~/.local/share/lf/files
+    lf -remote "send clear"
+	lf -remote 'send reload'
+}}
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+# paste as a symbolic link to original
+cmd paste_link %{{
+  for file in $(cat ~/.local/share/lf/files); do
+    if [ ! -n "${mode+1}" ]; then
+      mode="$file"
+      continue
+    fi
+    files+=("$file")
+  done
+  if [ -z "$files" ] || [ "${#files[@]}" -lt 1 ]; then
+    lf -remote "send $id echo no files to link files: ${files}"
+    exit 0
+  fi
+  ln -sr $files -t .
+}}
+
+cmd bulk-rename ${{
+    old="$(mktemp)"
+    new="$(mktemp)"
+    [ -n "$fs" ] && fs="$(ls)"
+    printf '%s\n' "$fs" >"$old"
+    printf '%s\n' "$fs" >"$new"
+    $EDITOR "$new"
+    [ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
+    paste "$old" "$new" | while IFS= read -r names; do
+        src="$(printf '%s' "$names" | cut -f1)"
+        dst="$(printf '%s' "$names" | cut -f2)"
+        if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+            continue
+        fi
+        mv -- "$src" "$dst"
+    done
+    rm -- "$old" "$new"
+    lf -remote "send $id unselect"
+}}
+
+cmd mkdir %{{
+    printf "Name of the directory: "
+    read dirname
+    mkdir -p "$(echo $dirname | tr ' ' '\ ')"
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+cmd chown %{{
+  printf " chown "
+  read own
+
+  for file in "$fx"
+  do
+    chown $own $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+cmd chmod %{{
+  printf " chmod "
+  read bits
+  for file in "$fx"
+  do
+    chmod $bits $file
+  done
+  lf -remote 'send reload';
+  sleep 1
+  lf -remote 'send reload';
+}}
+
+cmd filesize ${{
+    path=$(realpath $f)
+    #if [ -z $path ]; then path=$(printf $f); fi
+    size=$(du -sh "$path" | awk '{print $1}')
+    freespace=$(df -h $path | awk 'FNR == 2 {print $4}')
+    lf -remote "send echomsg \"Size: ${size}, Space on disk: ${freespace}. \""
+}}
+
+cmd foldersize !{{
+  max_depth=0
+  if [ -z "$fs" ]; then
+    fx="."
+    max_depth=1
+  fi
+  echo "$fx" | xargs -r -d "\n" du --max-depth="$max_depth" -h --apparent-size
+}}
+
+cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd dragon-stay %dragon-drag-and-drop -a $fx
+cmd dragon-individual %dragon-drag-and-drop $fx
+cmd cpdragon %cpdragon
+cmd mvdragon %mvdragon
+cmd dlfile %dlfile
+
+cmd setbg "$1"
+cmd bulkrename $printf '%s\n' $fx | vidir -
+cmd full_rename push re<c-u>
+cmd rename_at_beginning push re<c-a>
+cmd rename_after_extension push re<a-b>
+cmd rename_before_extension push re<a-b><a-b><a-f>
+
+cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
+cmd yank-path $printf '%s' "$fx" | xclip -i -selection clipboard
+cmd yank-basename $basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
+cmd yank-content $cat $fx | xclip -i -selection clipboard
+
+# Bindings
+#reset
+map y
+map d
+map gh
+map f
+map i
+
+# General
+map <c-f> $lf -remote "send $id select '$(fzf)'"
+map g top
+map D delete
+map E extract
+map <c-r> reload
+map <c-s> set hidden!
+map <enter> ${{nohup st </dev/null >/dev/null 2>&1 &}}
+map ex $$f
+map eX !$f
+map x cut
+map o &mimeopen $f
+map O $mimeopen --ask $f
+
+# Dragon Mapping
+map dr dragon
+map ds dragon-stay
+map di dragon-individual
+map dm mvdragon
+map dc cpdragon
+map dl dlfile
+
+map ii fileinfo
+map if foldersize
+
+# Archives
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+
+# Renames
+map r
+map re rename # at the very end
+map rr full_rename # new rename
+map rb rename_at_beginning # at the very beginning
+map ri rename_before_extension # before extention
+map ra rename_after_extension # after extention
+map B bulkrename
+map b $setbg $f
+
+map p
+map pp paste
+map pl :paste_link
+
+map m
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map mc chmod
+map mo chown
+
+map <c-e> down
+map <c-y> up
+map V ${{nohup st lvim .</dev/null >/dev/null 2>&1 &}}
+map U unselect
+map CC clear
+
+# yank
+map yy copy
+map yd yank-dirname
+map yp yank-path
+map yb yank-basename
+map yc yank-content
+
+map ,
+map , :{{ set nopreview; set ratios 1; }}
+map . :{{ set nopreview false; set preview; set ratios 1:2:3; }}
+# Source Bookmarks
+source "~/.config/lf/shortcutrc"

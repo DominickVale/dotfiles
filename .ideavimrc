@@ -1,0 +1,178 @@
+Plug 'wellle/targets.vim'
+let mapleader =" "
+set smartcase
+set easymotion
+set commentary
+set NERDTree
+set surround
+set clipboard+=unnamedplus
+set scrolloff=5
+set incsearch
+set showmode
+set showcmd
+set highlightedyank
+set multiple-cursors
+set ideavimjoin
+set ideamarks
+set number relativenumber
+" Enable autocompletion:
+set wildmode=longest,list,full
+" Perform dot commands over visual blocks:
+vnoremap . :normal .<CR>
+
+set which-key
+" disable the timeout option
+set notimeout
+
+noremap gV `[v`]
+
+" Easymotion
+map <leader>w
+map <leader> <Plug>(easymotion-prefix)
+map <leader><leader>. <Plug>(easymotion-repeat)
+map <leader><leader>f <Plug>(easymotion-bd-f)
+map <leader><leader>j <Plug>(easymotion-bd-line)
+map <leader><leader>k <Plug>(easymotion-bd-line)
+map <leader><leader>w <Plug>(easymotion-bd-w)
+
+map <leader>o :setlocal spell! spelllang=en_us<CR>
+map <leader>o :setlocal spell! spelllang=en_us<CR>
+
+"" NERDTree
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapCloseDir='h'
+" Replace ex mode with gq
+map Q gq
+
+map s :action Replace<CR>
+map \\A :action SelectAllOccurrences<CR>
+
+
+" Git
+map <leader>gg :action ActivateVersionControlToolWindow<CR>
+map <leader>gm :action Git.Menu<CR>
+map <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
+map <leader>gk :action VcsShowPrevChangeMarker<CR>
+map <leader>gj :action VcsShowNextChangeMarker<CR>
+map <leader>gw :action ActivateVersionControlToolWindow<CR>
+map <leader>gr :action ActivatePullRequestsToolWindow<CR> 
+map <leader>ga :action Annotate<CR>
+
+ " General
+map gD :action GotoDeclaration<CR>
+map <leader>lh :action QuickJavaDoc<CR>
+map gI :action GotoImplementation<CR>
+map <leader>lpt :action QuickTypeDefinition<CR>
+map <leader>lpi :action QuickImplementations<CR>
+map <leader>lpu :action ShowUsages<CR>
+map <leader>lj :action GotoNextError<CR>
+map <leader>lk :action GotoPreviousError<CR>
+map gl :action ShowErrorDescription<CR>
+map <leader>ll :action ShowErrorDescription<CR>
+map <leader>la :action ShowIntentionActions<CR>
+map <leader>vrn :action RenameElement<CR>
+map <leader>lff :action ReformatCode<CR>
+map <leader>lfi :action OptimizeImports<CR>
+map <leader>lft :action Javascript.Linters.EsLint.Fix<CR>
+map <leader>lfp :action ReformatWithPrettierAction<CR>
+map <leader>st :action FindInPath<CR>
+map <leader>sf :action GotoFile<CR>
+map <leader>hl :action LocalHistory.ShowHistory<CR>
+map <leader>r :action Refactorings.QuickListPopupAction<CR>
+map <leader>vs :action FileStructurePopup<CR>
+
+map <c-w>w :action UnsplitAll<CR><esc>
+map <c-w>q :action CloseContent<CR><esc>
+map <leader>c :action CloseContent<CR><esc>
+map <c-w>r :action CloseAllEditorsButActive<CR><esc>
+map g; <Action>(JumpToLastChange)
+map g, <Action>(JumpToNextChange)
+
+map <c-o> <Action>(Back)
+map <c-i> <Action>(Forward)
+nnoremap c "_c
+map <leader>w :action SaveAll<CR>
+
+" Jump to start and end of line using the home row keys
+map H ^
+map L $
+
+" Shortcutting split navigation, saving a keypress:
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" General"
+vnoremap J :action MoveLineDown<CR>
+vnoremap K :action MoveLineUp<CR>
+
+nnoremap <s-TAB> :action PreviousTab<CR>
+nnoremap <TAB> :action NextTab<CR>
+
+nnoremap Y yg$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+vnoremap < <gv
+vnoremap > >gv
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+xnoremap <leader>p "_dP
+nnoremap ,rw :action ActivateRunToolWindow<CR>
+nnoremap ,rm :action RunMenu<CR>
+nnoremap ,rc :action ChooseRunConfiguration<CR>
+nnoremap ,rrf :action RerunFailedTests<CR>
+nnoremap ,rrr :action Rerun<CR>
+map \r :source ~/.ideavimrc<CR>
+
+map <leader>t :action com.sburlyaev.cmd.plugin.actions.OpenTerminal<CR>
+
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y gg"+yG
+
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Select text that was last pasted
+nnoremap gp `[v`]
+
+" Settings
+let g:highlightedyank_highlight_duration = "100"
+let g:highlightedyank_highlight_color = "rgba(255, 146, 0, 100)"
+
+
+" VIM/IDE OVERRIDES
+
+sethandler <S-Tab> a:vim
+sethandler <C-S-2> a:ide
+sethandler <C-S-6> a:ide
+sethandler <C-;> a:vim
+sethandler <C-S-;> a:vim
+sethandler <C-A> a:vim
+sethandler <C-B> a:vim
+sethandler <C-C> a:vim
+sethandler <C-D> a:vim
+sethandler <C-E> a:vim
+sethandler <C-F> a:vim
+sethandler <C-H> a:vim
+sethandler <C-I> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:ide
+sethandler <C-L> a:vim
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <A-P> a:ide
+sethandler <C-R> a:vim
+sethandler <C-S> a:vim
+sethandler <C-T> a:vim
+sethandler <C-U> a:vim
+sethandler <C-V> a:vim
+sethandler <C-W> a:vim
+sethandler <C-X> a:vim
+sethandler <C-\> a:ide
+sethandler <C-]> a:vim
