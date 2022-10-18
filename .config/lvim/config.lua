@@ -37,12 +37,6 @@ vim.cmd([[
 ]])
 vim.opt.termguicolors = true
 
-local ccc = require("ccc")
-local mapping = ccc.mapping
-ccc.setup({
-  highlighter = { auto_enable = true }
-})
-
 -- general
 vim.cmd([[
 	map H ^
@@ -230,6 +224,13 @@ lvim.plugins = {
   { "github/copilot.vim" },
   { "uga-rosa/ccc.nvim" }
 }
+
+
+local ccc = require("ccc")
+local mapping = ccc.mapping
+ccc.setup({
+  highlighter = { auto_enable = true }
+})
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },

@@ -10,15 +10,16 @@
     "modules-right": ["custom/network","tray", "sway/language", "pulseaudio", "backlight", "battery", "clock", "idle_inhibitor"],
     // Modules configuration
     "sway/workspaces": {
-        "disable-scroll": true,
+        "disable-scroll": false,
         "all-outputs": false,
         "format": "{icon}",
          "format-icons": {
-             "1": "",
-             "2": "",
-             "3": "",
-             "8": "",
-             "9": "",
+             "1": "  ",
+             "2": "  ",
+             "3": "  ",
+             "3": "  ",
+             "8": "  ",
+             "9": "  ",
              "urgent": "",
     //         "focused": "",
     //         "default": ""
@@ -156,7 +157,7 @@
         "on-click": "pavucontrol"
     },
     "custom/media": {
-        "format": "{icon} - {}",
+        "format": "{icon} {}",
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
@@ -164,9 +165,8 @@
             "default": "🎜"
         },
         "escape": true,
-        //"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        "exec": "python $HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-        //"exec": "echo testttttttttttttttttttttttttttt"
+        "exec": "python $HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        //"exec": "python $HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "disk": {
         "interval": 30,
