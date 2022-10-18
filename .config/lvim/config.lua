@@ -34,9 +34,14 @@ vim.cmd([[
 	map <leader><leader>w <Plug>(easymotion-bd-w)
 	map  / <Plug>(easymotion-sn)
 	omap / <Plug>(easymotion-tn)
-	map  n <Plug>(easymotion-next)
-	map  N <Plug>(easymotion-prev)
 ]])
+vim.opt.termguicolors = true
+
+local ccc = require("ccc")
+local mapping = ccc.mapping
+ccc.setup({
+  highlighter = { auto_enable = true }
+})
 
 -- general
 vim.cmd([[
@@ -223,6 +228,7 @@ lvim.plugins = {
   { "wuelnerdotexe/vim-astro" },
   { "glacambre/firenvim" },
   { "github/copilot.vim" },
+  { "uga-rosa/ccc.nvim" }
 }
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
@@ -237,4 +243,3 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
-
