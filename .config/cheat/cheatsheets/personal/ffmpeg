@@ -41,3 +41,8 @@ ffmpeg -acodec libvorbis -i input.ogg -acodec pcm_s16le output.wav
 
 # Convert mp3 to ogg
 ffmpeg -i input.mp3 -c:a libvorbis -q:a 4 output.ogg
+
+# Convert mp4 to gif
+ffmpeg -i input.mp4 \
+    -vf "fps=10,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+    -loop 0 output.gif
