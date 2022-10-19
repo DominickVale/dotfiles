@@ -10,7 +10,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "gruvbox-material"
+lvim.colorscheme = "github_dark"
 -- theme settings
 vim.cmd([[
   let g:gruvbox_material_palette = 'original'
