@@ -1,0 +1,13 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Fonts
+ *
+ **/
+
+* {
+    font: "Ubuntu Mono Nerd Font 14";
+    font-smaller: "Ubuntu Mono Nerd Font 12";
+}

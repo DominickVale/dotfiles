@@ -13,7 +13,7 @@ set $term-float foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -display-drun 'Fire up' -theme ~/.config/rofi/theme.rasi -show drun
+set $menu ~/.config/rofi/launchers/type-1/launcher.sh
 
 set $powermenu ~/.config/waybar/scripts/power-menu.sh
 
