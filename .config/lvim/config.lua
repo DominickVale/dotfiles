@@ -111,7 +111,7 @@ lvim.builtin.which_key.mappings["r"] = {
 }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Terminal",
-  t = { ":!{nohup st </dev/null >/dev/null 2>&1 &}<CR><CR>", "Open path in terminal" },
+  t = { ":!{nohup foot </dev/null >/dev/null 2>&1 &}<CR><CR>", "Open path in terminal" },
 }
 
 -- TODO: User Config for predefined plugins
