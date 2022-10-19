@@ -1,5 +1,5 @@
 #!/bin/bash
-#source /home/dominick/.config/shell/profileexport SDL_VIDEODRIVER=wayland
+source /home/dominick/.config/shell/profile
 export SDL_VIDEODRIVER=wayland
 export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP="sway"
