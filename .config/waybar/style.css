@@ -173,6 +173,9 @@ button:hover {
 .modules-right label {
     color: @fg_primary;
 }
+.modules-right #tray label{
+  color: @fg_secondary;
+}
 .modules-right widget > button {
   padding: 0px 9px;
 }
