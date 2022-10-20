@@ -11,12 +11,12 @@ nm-applet --indicator &
 # Welcome App
 dex -a -s /etc/xdg/autostart/:~/.config/autostart/   &
 
-# Waybar
-waybar -c ~/.config/waybar/config.hypr &
-
 # General apps
 copyq &
 blueman-applet &
 gammastep &
 swww init &&
 swww img Pictures/wallpapers/windows-2k.jpeg &
+
+# Waybar
+waybar -c ~/.config/waybar/config.hypr &
