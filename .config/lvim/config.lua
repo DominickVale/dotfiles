@@ -222,7 +222,9 @@ lvim.plugins = {
   { "wuelnerdotexe/vim-astro" },
   { "glacambre/firenvim" },
   { "github/copilot.vim" },
-  { "uga-rosa/ccc.nvim" }
+  { "uga-rosa/ccc.nvim" },
+  { "chrisbra/csv.vim" },
+  { "Fymyte/rasi.vim" }
 }
 
 

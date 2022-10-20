@@ -21,3 +21,4 @@ exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec copyq
 exec blueman-applet
 exec gammastep
+exec swww init
