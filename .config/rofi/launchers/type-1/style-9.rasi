@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "emoji,drun,window,filebrowser,calc,todo:/home/dominick/.local/bin/rofi/rofi-todo.sh,ssh";
+	modi:                       "emoji,drun,calc,todo:/home/dominick/.local/bin/rofi/rofi-todo.sh";
     show-icons:                 true;
     display-emoji:              "  Emoji";
     display-drun:               "  Apps";
@@ -94,7 +94,7 @@ mainbox {
     border-radius:               0px 0px 0px 0px;
     border-color:                @border-colour;
     background-color:            transparent;
-    children:                    [ "inputbar", "message", "custombox" ];
+    children:                    [ "inputbar", "custombox" ];
 }
 
 /*****----- A Custom Box -----*****/
