@@ -27,7 +27,8 @@ alias \
 	xc="xclip -selection clipboard" \
 	setup_gdrive="rclone mount --daemon gdrive: /home/dominick/gdrive/" \
 	keylist="xmodmap -pke | less" \
-  dmenu="rofi -dmenu"
+  dmenu="rofi -dmenu" \
+  lg="lazygit"
 
 # Colorize commands when possible.
 alias \
