@@ -288,6 +288,10 @@ map yp yank-path
 map yb yank-basename
 map yc yank-content
 
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
 map ,
 map , :{{ set nopreview; set ratios 1; }}
 map . :{{ set nopreview false; set preview true; set ratios 1:2:3; }}
