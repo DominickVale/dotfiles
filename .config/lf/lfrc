@@ -12,10 +12,7 @@ set drawbox on
 set info size
 set dircounts
 set preview true
-set cleaner '~/.config/lf/cleaner'
-set previewer '~/.config/lf/scope'
-# Vars that depend on environmental variables
-$lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
+set previewer '~/.config/lf/preview'
 
 # cmds/functions
 cmd on-cd &{{
@@ -293,6 +290,6 @@ map yc yank-content
 
 map ,
 map , :{{ set nopreview; set ratios 1; }}
-map . :{{ set nopreview false; set preview; set ratios 1:2:3; }}
+map . :{{ set nopreview false; set preview true; set ratios 1:2:3; }}
 # Source Bookmarks
 source "~/.config/lf/shortcutrc"

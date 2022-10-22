@@ -77,4 +77,4 @@ alias \
 
 # Wrappers
 alias \
-	lf="lfub" \
+	lf="lfrun" \

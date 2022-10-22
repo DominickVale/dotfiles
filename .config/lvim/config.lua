@@ -185,6 +185,14 @@ formatters.setup {
   },
 }
 
+-- ignore annoying warnings
+local notify = vim.notify
+vim.notify = function(msg, ...)
+    if msg:match("warning: multiple different client offset_encodings") then
+        return
+    end
+    notify(msg, ...)
+end
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
@@ -229,7 +237,6 @@ lvim.plugins = {
 
 
 local ccc = require("ccc")
-local mapping = ccc.mapping
 ccc.setup({
   highlighter = { auto_enable = true }
 })
