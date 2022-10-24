@@ -1,1 +1,12 @@
-/**
+*
+!.config
+!.local
+!.zshrc
+!.bashrc
+!.profile
+!.bash_profile
+!.XCompose
+!.Xresources
+!.ideavimrc
+!.gtkrc-2.0
+
