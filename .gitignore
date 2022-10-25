@@ -5,6 +5,8 @@
 .config/Google
 .config/JetBrains
 .config/copyq
+!.local
+!.local/bin
 !.local/bin/**
 !.local/share/chars/**
 !.zshrc
