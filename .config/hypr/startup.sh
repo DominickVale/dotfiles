@@ -19,4 +19,4 @@ swww init &&
 swww img Pictures/wallpapers/windows-2k.jpeg &
 
 # Waybar
-waybar -c ~/.config/waybar/config.hypr &
+waybar &

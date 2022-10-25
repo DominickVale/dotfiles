@@ -76,6 +76,14 @@ fi
 # Added
 echo $#
 if [ $# == 0 ]; then
+
+DELAY=`$MENU -l 5 -p "Delay?" -select "0" << EOF
+0
+1
+5
+10
+20
+EOF`
 echo "Show menu"
 # -l is number of lines
 # -a is active (blue text) -u is urgent (red background)
@@ -98,11 +106,14 @@ else
   echo "From param $1"
   CHOICE=$1
 fi
+
+sleep "$DELAY"
+
 case "$CHOICE" in
     "Fullscreen")
-        /usr/share/sway/scripts/grimshot save output - | swappy -f -;;
+        /usr/bin/grimshot save output - | swappy -f -;;
     "Region")
-        /usr/share/sway/scripts/grimshot save area - | swappy -f -;;
+        /usr/bin/grimshot save area - | swappy -f -;;
     "Region-Resize-Half")
         slurp | grim -g - "$FILENAME"
         ORG_FILENAME=$FILENAME
@@ -120,11 +131,11 @@ case "$CHOICE" in
         swappy -f $FILENAME
         ;;
     "Select-output")
-        /usr/share/sway/scripts/grimshot save output - | swappy -f -;;
+        /usr/bin/grimshot save output - | swappy -f -;;
     "Select-window")
-        /usr/share/sway/scripts/grimshot save window - | swappy -f -;;
+        /usr/bin/grimshot save window - | swappy -f -;;
     "Focused")
-        /usr/share/sway/scripts/grimshot save active - | swappy -f -;;
+        /usr/bin/grimshot save active - | swappy -f -;;
     "Color-Picker")
         COLOR=`hyprpicker`
         echo "$COLOR picked"

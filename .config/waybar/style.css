@@ -91,13 +91,20 @@ button:hover {
     color: #666;
 }
 
-#workspaces button.focused {
-    /* background-color: #64727D; */
-    box-shadow: inset 0 -3px #444;
+#workspaces button.active {
+    box-shadow: inset 0 -3px #FFF;
 }
 
-#workspaces button.urgent {
-    color: #eb4d4b;
+#workspaces button:not(.active) label{
+    opacity: 0.8;
+}
+
+#workspaces button.urgent label {
+    animation-name: blink_red;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #mode {

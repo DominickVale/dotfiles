@@ -5,14 +5,15 @@
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": [ "memory", "disk", "cpu", "temperature", "sway/window"],
-    "modules-center": ["sway/workspaces"],
-    "modules-right": ["custom/network","tray", "sway/language", "pulseaudio", "backlight", "battery", "clock", "idle_inhibitor"],
+    "modules-left": [ "memory", "disk", "cpu", "temperature", "hyprland/window"],
+    "modules-center": ["wlr/workspaces"],
+    "modules-right": ["custom/network","tray", "wlr/language", "pulseaudio", "backlight", "battery", "clock", "idle_inhibitor"],
     // Modules configuration
-    "sway/workspaces": {
+    "wlr/workspaces": {
         "disable-scroll": false,
         "all-outputs": false,
         "format": "{icon}",
+        "on-click": "activate",
          "format-icons": {
              "1": "  ",
              "2": "  ",
@@ -20,9 +21,10 @@
              "3": "  ",
              "8": "  ",
              "9": "  ",
-             "urgent": "",
-    //         "focused": "",
-    //         "default": ""
+             "10": "X ",
+             //"urgent": "",
+             //"active": "",
+             //"default": ""
          }
     },
     "keyboard-state": {
