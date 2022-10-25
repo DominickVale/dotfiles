@@ -1,0 +1,37 @@
+#!/bin/bash
+HOUR=$(date +%H)
+STEP=1
+FPS=1
+if [ "$1" = "now" ]; then
+  STEP=255
+  FPS=255
+fi
+
+echo $STEP
+echo $FPS
+
+notify-send "Changing wallpaper: $HOUR"
+case "$HOUR" in
+  03|04|05)
+    swww img --transition-step $STEP --transition-fps $FPS /home/dominick/Pictures/wallpaper/03.jpg
+  ;;
+  06|07|08)
+    swww img --transition-step $STEP --transition-fps $FPS /home/dominick/Pictures/wallpaper/06.jpg
+  ;;
+  09|10|11)
+    swww img --transition-step $STEP --transition-fps $FPS /home/dominick/Pictures/wallpaper/09.jpg
+  ;;
+  12|13|14)
+    swww img --transition-step $STEP --transition-fps $FPS /home/dominick/Pictures/wallpaper/12.jpg
+  ;;
+  15|16|17)
+    swww img --transition-step $STEP --transition-fps $FPS /home/dominick/Pictures/wallpaper/15.jpg
+  ;;
+  18|19)
+    swww img --transition-step $STEP --transition-fps $FPS /home/dominick/Pictures/wallpaper/18.jpg
+  ;;
+  *)
+    swww img --transition-step $STEP --transition-fps $FPS /home/dominick/Pictures/wallpaper/00.jpg
+  ;;
+esac
+

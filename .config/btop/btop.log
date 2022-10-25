@@ -1,0 +1,44 @@
+
+2022/10/25 (10:01:16) | ===> btop++ v.1.2.12
+2022/10/25 (10:01:16) | INFO: Logger set to DEBUG
+2022/10/25 (10:01:16) | DEBUG: Setting LC_ALL=en_US.UTF-8
+2022/10/25 (10:01:16) | INFO: Running on /dev/pts/4
+2022/10/25 (10:02:04) | DEBUG: Writing new config file
+2022/10/25 (10:02:04) | INFO: Quitting! Runtime: 00:00:48
+
+2022/10/25 (10:10:21) | ===> btop++ v.1.2.12
+2022/10/25 (10:10:21) | INFO: Logger set to DEBUG
+2022/10/25 (10:10:21) | DEBUG: Setting LC_ALL=en_US.UTF-8
+2022/10/25 (10:10:21) | INFO: Running on /dev/pts/0
+2022/10/25 (10:10:31) | INFO: Quitting! Runtime: 00:00:10
+
+2022/10/25 (10:13:36) | ===> btop++ v.1.2.12
+2022/10/25 (10:13:36) | INFO: Logger set to DEBUG
+2022/10/25 (10:13:36) | DEBUG: Setting LC_ALL=en_US.UTF-8
+2022/10/25 (10:13:36) | INFO: Running on /dev/pts/1
+2022/10/25 (10:14:06) | INFO: Quitting! Runtime: 00:00:30
+
+2022/10/25 (10:43:07) | ===> btop++ v.1.2.12
+2022/10/25 (10:43:07) | INFO: Logger set to DEBUG
+2022/10/25 (10:43:07) | DEBUG: Setting LC_ALL=en_US.UTF-8
+2022/10/25 (10:43:07) | INFO: Running on /dev/pts/2
+2022/10/25 (10:43:12) | INFO: Quitting! Runtime: 00:00:05
+
+2022/10/25 (10:43:41) | ===> btop++ v.1.2.12
+2022/10/25 (10:43:41) | INFO: Logger set to DEBUG
+2022/10/25 (10:43:41) | DEBUG: Setting LC_ALL=en_US.UTF-8
+2022/10/25 (10:43:41) | INFO: Running on /dev/pts/2
+2022/10/25 (10:43:52) | INFO: Quitting! Runtime: 00:00:11
+
+2022/10/25 (10:44:38) | ===> btop++ v.1.2.12
+2022/10/25 (10:44:38) | INFO: Logger set to DEBUG
+2022/10/25 (10:44:38) | DEBUG: Setting LC_ALL=en_US.UTF-8
+2022/10/25 (10:44:38) | INFO: Running on /dev/pts/2
+2022/10/25 (10:45:00) | INFO: Quitting! Runtime: 00:00:22
+
+2022/10/25 (12:13:56) | ===> btop++ v.1.2.12
+2022/10/25 (12:13:56) | INFO: Logger set to DEBUG
+2022/10/25 (12:13:56) | DEBUG: Setting LC_ALL=en_US.UTF-8
+2022/10/25 (12:13:56) | INFO: Running on /dev/pts/2
+2022/10/25 (12:19:41) | DEBUG: Writing new config file
+2022/10/25 (12:19:41) | INFO: Quitting! Runtime: 00:05:45

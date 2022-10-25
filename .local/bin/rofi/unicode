@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [[ -z "$@" ]]; then
+		cut -d ';' -f1 ~/.local/share/chars/fontawesome
+else
+	res=$(echo $1 | cut -d ' ' -f1)
+	wl-copy $res
+	notify-send "'$res' copied to clipboard."
+	exit 0
+fi

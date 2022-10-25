@@ -9,8 +9,9 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "emoji,drun,calc,todo:/home/dominick/.local/bin/rofi/rofi-todo.sh";
+	modi:                       "emoji,unicode:/home/dominick/.local/bin/rofi/unicode,drun,calc,todo:/home/dominick/.local/bin/rofi/rofi-todo.sh";
     show-icons:                 true;
+    display-unicode:              "  Unicode";
     display-emoji:              "  Emoji";
     display-drun:               "  Apps";
     display-run:                "  Run";

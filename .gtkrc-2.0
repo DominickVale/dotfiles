@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/dominick/.gtkrc-2.0.mine"
-gtk-theme-name="Arc-Dark"
-gtk-icon-theme-name="Qogir-dark"
+gtk-theme-name="Colloid-Dark-Compact"
+gtk-icon-theme-name="Colloid-dark"
 gtk-font-name="SF Pro Display 12"
 gtk-cursor-theme-name="Qogir-dark"
 gtk-cursor-theme-size=0

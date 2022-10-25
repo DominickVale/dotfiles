@@ -1,9 +1,9 @@
 {
-    // "layer": "top", // Waybar at top layer
+    "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     //"height": 40, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 0, // Gaps between modules (4px)
+    "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [ "memory", "disk", "cpu", "temperature", "hyprland/window"],
     "modules-center": ["wlr/workspaces"],
@@ -14,14 +14,18 @@
         "all-outputs": false,
         "format": "{icon}",
         "on-click": "activate",
+        "sort-by-number": true,
          "format-icons": {
-             "1": "  ",
-             "2": "  ",
-             "3": "  ",
-             "3": "  ",
-             "8": "  ",
-             "9": "  ",
-             "10": "X ",
+             "1": "Ⅰ",
+             "2": "Ⅱ",
+             "3": "Ⅲ",
+             "4": "Ⅳ",
+             "5": "Ⅴ",
+             "6": "Ⅵ",
+             "7": "Ⅶ",
+             "8": "Ⅷ",
+             "9": "Ⅸ",
+             "10":"Ⅹ",
              //"urgent": "",
              //"active": "",
              //"default": ""
@@ -73,8 +77,8 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+        "icon-size": 18,
+        "spacing": 18
     },
     "clock": {
         "interval": 30,
