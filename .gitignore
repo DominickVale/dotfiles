@@ -1,6 +1,12 @@
 *
+!.config
 !.config/**
-!.local/**
+.config/Android
+.config/Google
+.config/JetBrains
+.config/copyq
+!.local/bin/**
+!.local/share/chars/**
 !.zshrc
 !.bashrc
 !.profile
