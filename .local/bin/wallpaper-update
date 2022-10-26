@@ -1,5 +1,9 @@
 #!/bin/bash
+
+# Run once with "now" to set it at startup
+/home/dominick/.local/bin/wallpaper now
+
 while [[ true ]]; do
     sleep 1800
-    ./wallpaper
+    /home/dominick/.local/bin/wallpaper
 done;

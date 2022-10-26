@@ -10,7 +10,7 @@ fi
 echo $STEP
 echo $FPS
 
-notify-send "Changing wallpaper: $HOUR"
+notify-send "Changing wallpaper: $HOUR" -u low -t 500
 case "$HOUR" in
   03|04|05)
     swww img --transition-step $STEP --transition-fps $FPS /home/dominick/Pictures/wallpaper/03.jpg
