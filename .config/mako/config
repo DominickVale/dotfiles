@@ -1,23 +1,24 @@
 font=UbuntuMono 12.5
+markup=1
+actions=1
+icons=1
+icon-path=/usr/share/icons/Adwaita/:/usr/share/icons/gnome/:/usr/share/icons/HighContrast/
+default-timeout=10000
+border-size=3
+border-radius=10
+border-color=#daa520aa
+anchor=top-center
+width=500
+group-by=summary,app-name
 
-background-color=#404552
-text-color=#e5e9f0
-width=315
-height=200
-padding=10
-margin=10
-progress-color=over #eceff480
-icon-path=/usr/share/icons/Arc-X-D
-max-icon-size=70
-layer=overlay
+# DynamicBackground - see redshift hook
+background-color=#00000099
+# DynamicForeground - see redshift hook
+text-color=#ffffff
 
-border-size=5
-border-radius=0
-border-color=#5294e2
-
-default-timeout=5000
-
-[urgency=high]
+[actionable]
+background-color=#00660099
+text-color=#ffffff
 
 ignore-timeout=1
-
+default-timeout=0

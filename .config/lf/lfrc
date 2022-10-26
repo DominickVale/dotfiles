@@ -232,7 +232,7 @@ map <c-s> set hidden!
 map <enter> ${{nohup foot </dev/null >/dev/null 2>&1 &}}
 map ex $$f
 map eX !$f
-map x cut
+map <c-x> cut
 map o &mimeopen $f
 map O $mimeopen --ask $f
 
