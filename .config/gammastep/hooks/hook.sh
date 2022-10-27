@@ -1,11 +1,12 @@
 #!/bin/env bash
 GTK_THEME='Colloid-Compact'
 GTK_THEME_NIGHT='Colloid-Dark-Compact'
+export TERMINAL=foot
 
+killall waybar
 echo `date` "$1 $2 $3" >> /tmp/gammastep.txt
 case $1 in
     period-changed)
-
         case $3 in
           transition|daytime|none)
             notify-send "Changing to day"
@@ -34,4 +35,5 @@ case $1 in
         esac
 esac
 makoctl reload
-killall waybar; waybar &
+sleep 1
+hyprctl dispatch exec waybar
