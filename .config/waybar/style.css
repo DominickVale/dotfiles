@@ -6,14 +6,7 @@
  *
  * =========================================================================== */
 
-/*
-Arc-Dark Color Scheme
-*/
-@define-color accent  #DAA520;
-@define-color bg_primary rgba(24, 28, 35, 0.8);
-@define-color bg_primary_full #181C23 ;
-@define-color fg_primary #eee;
-@define-color fg_secondary #7D839F;
+@import url('./dark.css');
 
 @keyframes blink-warning {
     70% {

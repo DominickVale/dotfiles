@@ -7,14 +7,15 @@ default-timeout=10000
 border-size=3
 border-radius=10
 border-color=#daa520aa
-anchor=top-center
+progress-color=#fcc631aa
+anchor=top-right
 width=500
 group-by=summary,app-name
 
-# DynamicBackground - see redshift hook
-background-color=#00000099
-# DynamicForeground - see redshift hook
-text-color=#ffffff
+# DynamicBackground 
+background-color=#ffffffDD
+# DynamicForeground 
+text-color=#000000
 
 [actionable]
 background-color=#00660099

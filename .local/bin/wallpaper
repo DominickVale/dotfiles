@@ -1,5 +1,5 @@
 #!/bin/bash
-HOUR=$(date +%H)
+HOUR="${2:-$(date +%H)}"
 STEP=1
 FPS=1
 if [ "$1" = "now" ]; then
