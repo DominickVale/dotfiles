@@ -8,8 +8,8 @@
  **/
 
 * {
-    // font: "Ubuntu Mono Nerd Font 14";
-    // font-smaller: "Ubuntu Mono Nerd Font 12";
-    font: "SF Pro Text Bold 12";
-    font-smaller: "SF Pro Text 10";
+    /* font: "Ubuntu Mono Nerd Font 14"; */
+    /* font-smaller: "Ubuntu Nerd Font 12"; */
+    font: "Ubuntu Nerd Font 12";
+    font-smaller: "SF Pro Display 10";
 }
