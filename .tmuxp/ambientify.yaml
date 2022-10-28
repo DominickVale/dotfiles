@@ -1,0 +1,11 @@
+session_name: 'ambientify'
+windows:
+- focus: 'true'
+  layout: e3ff,57x66,0,0[57x13,0,0,0,57x26,0,14,2,57x25,0,41,3]
+  options: {}
+  panes:
+  - pane
+  - pane
+  - pane
+  start_directory: /home/dominick/Projects/Ambientify
+  window_name: zsh
