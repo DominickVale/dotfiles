@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": [ "memory", "disk", "cpu", "temperature", "hyprland/window"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["custom/network","tray", "wlr/language", "pulseaudio", "backlight", "battery", "clock", "idle_inhibitor"],
+    "modules-right": ["custom/network","tray", "sway/language", "pulseaudio", "backlight", "battery", "clock", "idle_inhibitor"],
     // Modules configuration
     "wlr/workspaces": {
         "disable-scroll": false,
@@ -82,9 +82,10 @@
     },
     "clock": {
         "interval": 30,
-        "format": "{:%e %b %Y %H:%M}", // Icon: calendar-alt
-        "format-alt": "{:%e %b %Y %H:%M}", // Icon: calendar-alt
-        "tooltip-format": "{:%e %B %Y %H:%M:%S}"
+        "format": "{:%e %a %b %Y %H:%M}",
+        "format-alt": "{:%e %b %Y %H:%M}",
+        "tooltip-format": "{:%e %B %Y %H:%M:%S}",
+        "on-click-right": "$BROWSER vivaldi://calendar"
     },
     "cpu": {
        "interval": 1,
@@ -178,6 +179,7 @@
     "disk": {
         "interval": 30,
         "format": "{percentage_used}% <span></span>",
+        "tooltip-format": "{used} used out of {total} on {path}\n{free} free"
     },
     "bluetooth": {
         "format": " {status}",
@@ -190,7 +192,9 @@
         "tooltip-format": "{}"
     },
     "sway/language": {
-        "format": "ㅤ{}",
+        "format": "{}",
+        "format-en": "🇬🇧 ",
+        "format-it": "🇮🇹 ",
         "max-length": 50
     }
 }

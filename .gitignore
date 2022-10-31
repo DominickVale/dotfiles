@@ -17,4 +17,6 @@
 !.Xresources
 !.ideavimrc
 !.gtkrc-2.0
-
+!.tmuxp
+!.tmuxp/**
+!.urlview
