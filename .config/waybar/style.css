@@ -6,7 +6,7 @@
  *
  * =========================================================================== */
 
-@import url('./dark.css');
+@import url('./light.css');
 
 @keyframes blink-warning {
     70% {
@@ -33,6 +33,15 @@
 @keyframes blink_red {
     to {
         color: red;
+    }
+}
+
+@keyframes blink_opacity {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
 
@@ -184,8 +193,16 @@ button:hover {
     min-height: 38px;
 }
 
-#battery.critical:not(.charging) {
+#battery.critical:not(.charging) label {
     animation-name: blink_red;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery span {
+    animation-name: blink_opacity;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
