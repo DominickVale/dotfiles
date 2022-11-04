@@ -49,7 +49,7 @@ map \\A :action SelectAllOccurrences<CR>
 
 
 " Git
-map <leader>gg :action ActivateVersionControlToolWindow<CR>
+" map <leader>gg :action ActivateVersionControlToolWindow<CR>
 map <leader>gm :action Git.Menu<CR>
 map <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
 map <leader>gk :action VcsShowPrevChangeMarker<CR>
@@ -57,6 +57,7 @@ map <leader>gj :action VcsShowNextChangeMarker<CR>
 map <leader>gw :action ActivateVersionControlToolWindow<CR>
 map <leader>gr :action ActivatePullRequestsToolWindow<CR> 
 map <leader>ga :action Annotate<CR>
+map <leader>gg :action Tool_External Tools_lazygit<CR>
 
  " General
 map gD :action GotoDeclaration<CR>
@@ -120,7 +121,7 @@ nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
 nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
-xnoremap <leader>p "_dP
+vnoremap <leader>p "_dP
 nnoremap ,rw :action ActivateRunToolWindow<CR>
 nnoremap ,rm :action RunMenu<CR>
 nnoremap ,rc :action ChooseRunConfiguration<CR>
