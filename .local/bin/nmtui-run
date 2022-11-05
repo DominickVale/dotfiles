@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sleep 1 && nmtui
+sleep 0.2 && nmtui
 
