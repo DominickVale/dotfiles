@@ -3,11 +3,11 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     //"height": 40, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 2, // Gaps between modules (4px)
+    "spacing": 14, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [ "memory", "disk", "cpu", "temperature", "hyprland/window"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["custom/network","tray", "sway/language", "pulseaudio", "backlight", "battery", "clock", "idle_inhibitor"],
+    "modules-right": ["custom/network","tray", "network", "sway/language", "pulseaudio", "backlight", "battery", "clock", "idle_inhibitor"],
     // Modules configuration
     "wlr/workspaces": {
         "disable-scroll": false,
@@ -129,7 +129,7 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{signalStrength}% {bandwidthUpBytes} {bandwidthDownBytes} ",
+        "format-wifi": "{signalStrength}% ",
         "format-ethernet": "",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
