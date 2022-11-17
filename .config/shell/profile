@@ -22,7 +22,7 @@ export LC_TIME=en_US.utf8
 # export QT_SCALE_FACTOR=1.7
 
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="lvim"
 # export TERMINAL="st"
 # export TERM_PROGRAM="st"
 # export TERM="st"
