@@ -16,6 +16,7 @@ case $1 in
             sed --follow-symlinks -i '/# DynamicBackground/{n;s/.*/background-color=#000000DD/}' $HOME/.config/mako/config
             sed --follow-symlinks -i '/# DynamicForeground/{n;s/.*/text-color=#ffffff/}' $HOME/.config/mako/config
             sed --follow-symlinks -i 's/background = \"dark\"/background = \"light\"/g' $HOME/.config/nvim/lua/user/init.lua
+            sed --follow-symlinks -i 's/background = \"dark\"/background = \"light\"/g' $HOME/.config/lvim/config.lua
             sed --follow-symlinks -i -E "s/(url.*)dark/\1light/g"    $HOME/.config/waybar/style.css 
             $HOME/.local/src/gogh/themes/papercolor-light.sh
             hyprctl --batch "keyword general:border_size 3 ; keyword decoration:inactive_opacity 0.75 ; keyword decoration:active_opacity 0.95 ; keyword general:col.active_border rgba(daa520ff)" 
@@ -28,6 +29,7 @@ case $1 in
             sed --follow-symlinks -i '/# DynamicBackground/{n;s/.*/background-color=#ffffffDD/}' $HOME/.config/mako/config
             sed --follow-symlinks -i '/# DynamicForeground/{n;s/.*/text-color=#000000/}' $HOME/.config/mako/config
             sed --follow-symlinks -i 's/background = \"light\"/background = \"dark\"/g' $HOME/.config/nvim/lua/user/init.lua
+            sed --follow-symlinks -i 's/background = \"light\"/background = \"dark\"/g' $HOME/.config/lvim/config.lua
             sed --follow-symlinks -i -E "s/(url.*)light/\1dark/g"    $HOME/.config/waybar/style.css 
             $HOME/.local/src/gogh/themes/google-dark.sh
             hyprctl --batch "keyword general:border_size 1 ; keyword decoration:inactive_opacity 0.65 ; keyword decoration:active_opacity 0.9 ; keyword general:col.active_border rgba(daa520dd)" 
