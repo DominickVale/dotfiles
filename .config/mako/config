@@ -13,9 +13,9 @@ width=500
 group-by=summary,app-name
 
 # DynamicBackground 
-background-color=#ffffffDD
+background-color=#000000DD
 # DynamicForeground 
-text-color=#000000
+text-color=#ffffff
 
 [actionable]
 background-color=#00660099

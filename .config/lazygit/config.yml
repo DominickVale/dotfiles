@@ -1,0 +1,11 @@
+customCommands:
+  - key: "<c-a>"
+    command: "git checkout {{index .PromptResponses 0}} {{ .SelectedPath}}"
+    context: "files"
+    loadingText: "..."
+    prompts:
+      - type: 'menu'
+        title: 'Choose'
+        options:
+          - value: '--ours'
+          - value: '--theirs'

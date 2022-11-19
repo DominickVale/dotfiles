@@ -85,7 +85,7 @@
         "format": "{:%e %a %b %Y %H:%M}",
         "format-alt": "{:%e %b %Y %H:%M}",
         "tooltip-format": "{:%e %B %Y %H:%M:%S}",
-        "on-click-right": "$BROWSER vivaldi://calendar"
+        "on-click-right": "xdg-open vivaldi://calendar"
     },
     "cpu": {
        "interval": 1,
