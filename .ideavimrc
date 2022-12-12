@@ -61,12 +61,12 @@ map <leader>ga :action Annotate<CR>
 map <leader>gg :action Tool_External Tools_lazygit<CR>
 
  " General
+map gr :action ShowUsages<CR>
 map gD :action GotoDeclaration<CR>
 map <leader>lh :action QuickJavaDoc<CR>
 map gI :action GotoImplementation<CR>
 map <leader>lpt :action QuickTypeDefinition<CR>
 map <leader>lpi :action QuickImplementations<CR>
-map <leader>lpu :action ShowUsages<CR>
 map <leader>lps :action FileStructurePopup<CR>
 map <leader>lj :action GotoNextError<CR>
 map <leader>lk :action GotoPreviousError<CR>
