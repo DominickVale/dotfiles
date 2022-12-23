@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+from math import *
+import time
+
+print("Hello there Mathy Captain")

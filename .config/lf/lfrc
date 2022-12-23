@@ -209,10 +209,10 @@ cmd rename_at_beginning push re<c-a>
 cmd rename_after_extension push re<a-b>
 cmd rename_before_extension push re<a-b><a-b><a-f>
 
-cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
-cmd yank-path $printf '%s' "$fx" | xclip -i -selection clipboard
-cmd yank-basename $basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
-cmd yank-content $cat $fx | xclip -i -selection clipboard
+cmd yank-dirname $dirname -- "$f" | head -c-1 | wl-copy
+cmd yank-path $printf '%s' "$fx" | wl-copy
+cmd yank-basename $basename -a -- $fx | head -c-1 | wl-copy
+cmd yank-content $cat $fx | wl-copy
 
 # Bindings
 #reset

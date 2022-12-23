@@ -1,0 +1,3 @@
+#!/bin/bash
+
+(wl-paste | wl-copy) && notify-send "Refreshed clipboard"
