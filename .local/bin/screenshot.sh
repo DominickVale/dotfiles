@@ -87,12 +87,13 @@ EOF`
 echo "Show menu"
 # -l is number of lines
 # -a is active (blue text) -u is urgent (red background)
-CHOICE=`$MENU -l 15 -a 0,1,2,3,4,5,6,7 -u 9,10,11,12,13 -p "Record" -select "Fullscreen" << EOF
+CHOICE=`$MENU -l 15 -a 0,1,2,3,4,5,6,7,8 -u 9,10,11,12,13 -p "Record" -select "Fullscreen" << EOF
 Fullscreen
 Focused
 Select-window
 Select-output
 Region
+Region-Flameshot
 Region-Resize-Half
 Region-Resize-25percent
 Color-Picker
@@ -107,15 +108,15 @@ else
   CHOICE=$1
 fi
 
-sleep "$DELAY"
-
 case "$CHOICE" in
     "Fullscreen")
-        /usr/bin/grimshot save output - | swappy -f -;;
+        sleep $DELAY && /usr/bin/grimshot save output - | swappy -f -;;
     "Region")
-        /usr/bin/grimshot save area - | swappy -f -;;
+        sleep $DELAY && /usr/bin/grimshot save area - | swappy -f -;;
+    "Region-Flameshot")
+        XDG_CURRENT_DESKTOP=sway /usr/bin/flameshot gui -d $((DELAY * 1000));;
     "Region-Resize-Half")
-        slurp | grim -g - "$FILENAME"
+        sleep $DELAY && slurp | grim -g - "$FILENAME"
         ORG_FILENAME=$FILENAME
         FILENAME=${TARGET}/`basename ${FILENAME} .png`-half.png
         convert $ORG_FILENAME $CONVERT_OPTS -distort Resize 50% $FILENAME
@@ -123,19 +124,17 @@ case "$CHOICE" in
         swappy -f $FILENAME
         ;;
     "Region-Resize-25percent")
-        slurp | grim -g - "$FILENAME"
+        sleep $DELAY && slurp | grim -g - "$FILENAME"
         ORG_FILENAME=$FILENAME
         FILENAME=${TARGET}/`basename ${FILENAME} .png`-25.png
         convert $ORG_FILENAME $CONVERT_OPTS -distort Resize 25% $FILENAME
         rm $ORG_FILENAME
         swappy -f $FILENAME
         ;;
-    "Select-output")
-        /usr/bin/grimshot save output - | swappy -f -;;
     "Select-window")
-        /usr/bin/grimshot save window - | swappy -f -;;
+        sleep $DELAY && /usr/bin/grimshot save window - | swappy -f -;;
     "Focused")
-        /usr/bin/grimshot save active - | swappy -f -;;
+        sleep $DELAY && /usr/bin/grimshot save active - | swappy -f -;;
     "Color-Picker")
         COLOR=`hyprpicker`
         echo "$COLOR picked"
@@ -143,30 +142,30 @@ case "$CHOICE" in
         notify "Color Picker" "Color picked is ${COLOR}\nCopied to clipboard" -t 6000
         exit;;
     "Record-select-output")
-        $RECORDER -g "$(echo "$OUTPUTS"|slurp)" -f "$RECORDING" &
+        sleep $DELAY && $RECORDER -g "$(echo "$OUTPUTS"|slurp)" -f "$RECORDING" &
         notify-rec "Display"
         REC=1 ;;
     "Record-select-window")
-        PARAM="$(echo "$WINDOWS"|slurp)"
+        sleep $DELAY && PARAM="$(echo "$WINDOWS"|slurp)"
         $RECORDER -g "$(echo "$WINDOWS"|slurp)" -f "$RECORDING" &
         notify-rec "Window"
         REC=1 ;;
     "Record-region")
-        PARAM="$(slurp)"
+        sleep $DELAY && PARAM="$(slurp)"
         $RECORDER -g "${PARAM}" -f "$RECORDING" &
         notify-rec "Region"
         REC=1 ;;
     "Record-region-gif")
-        PARAM="$(slurp)"
+        sleep $DELAY && PARAM="$(slurp)"
         $RECORDER -g "${PARAM}" -F fps=21 -c gif -f "$RECORDING_GIF" &
         notify-rec "Region as Gif"
         REC=1 ;;
     "Record-focused")
-        $RECORDER -g "$(eval echo $FOCUSED)" -f "$RECORDING" &
+        sleep $DELAY && $RECORDER -g "$(eval echo $FOCUSED)" -f "$RECORDING" &
         notify-rec "Focused"
         REC=1 ;;
     *)
-        grim -g "$(eval echo $CHOICE)" "$FILENAME" ;;
+        sleep $DELAY && grim -g "$(eval echo $CHOICE)" "$FILENAME" ;;
 esac
 if [ $REC ]; then
     echo "rec start"
